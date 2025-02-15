@@ -5,8 +5,9 @@ from django.views import View
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
-        return HttpResponse('''Добро пожаловать в Hexlet Django Blog.
-                               Это главная страница блога.''')
+        tags = kwargs.get('tags') if kwargs.get('tags') else 'python'
+        article = kwargs.get('article_id') if kwargs.get('article_id') else 42
+        return HttpResponse(f'Статья номер {article}. Тег {tags}')
 
 # def index(request):
 #     return render(request, 'articles/index.html', context={
