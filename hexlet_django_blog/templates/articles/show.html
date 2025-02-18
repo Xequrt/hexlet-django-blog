@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ article.name }}</h1>
+    <p><strong>Дата создания:</strong> {{ article.created_at|date:"d M Y" }}</p>
+    <p>{{ article.body }}
+    <li><a href="{% url 'article_index' %}">Назад</a></li>
+{% endblock %}
