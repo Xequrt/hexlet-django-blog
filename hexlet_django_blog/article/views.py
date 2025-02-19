@@ -5,6 +5,16 @@ from .forms import ArticleForm
 
 from hexlet_django_blog.article.models import Article
 
+class ArticleFormDeleteView(View):
+
+    def post(self, request, *args, **kwargs):
+        article_id = kwargs.get('id')
+        article = Article.objects.get(id=article_id)
+        if article:
+            article.delete()
+            messages.success(request, 'Данные удалены!')
+        return redirect('article_index')
+
 class ArticleFormEditView(View):
 
     def get(self, request, *args, **kwargs):
